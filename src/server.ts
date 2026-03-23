@@ -1,7 +1,7 @@
 import { Hono } from "hono";
 import { log } from "./config/logger.js";
 import { corsConfig } from "./config/cors.js";
-import { ratelimit } from "./config/ratelimit.js";
+import { getRateLimiter } from "./config/ratelimit.js";
 import { DeploymentEnv, env, SERVERLESS_ENVIRONMENTS } from "./config/env.js";
 import { errorHandler, notFoundHandler } from "./config/errorHandler.js";
 import type { ServerContext } from "./config/context.js";
