@@ -1,4 +1,4 @@
-name = "tatakai-api"
+name = "master-scraper"
 main = "src/server.ts"
 compatibility_date = "2026-03-23"
 compatibility_flags = ["nodejs_compat"]
