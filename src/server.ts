@@ -39,14 +39,16 @@ app.use(cacheControlHeaders);
 
 // API signature verification (enabled when API_SECRET is set)
 app.use(apiSignatureGuard);
+let _limiter: any; 
 const isPersonalDeployment = Boolean(env.API_HOSTNAME);
 if (isPersonalDeployment) {
     app.use('*', async (c, next) => {
-        const limiter = getRateLimiter();
-        return limiter(c, next);
+       if (!_limiter) {
+            _limiter = getRateLimiter();
+        }
+       return _limiter(c as any, next as any);
     });
 }
-
 // ========== HEALTH & INFO ENDPOINTS ==========
 app.get("/health", (c) => c.text("daijoubu", { status: 200 }));
 
